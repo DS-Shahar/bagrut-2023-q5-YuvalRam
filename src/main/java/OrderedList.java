@@ -45,9 +45,20 @@ public class OrderedList {
 
 	public void removeNum(int x) {
 		Node<NumCount> p = lst;
-		while(p!=null){
-			if(p.getValue().getNum()==x){
-				p.set
+		if(p.getValue().getNum()==x){
+				p.setValue().setCount(p.setValue().getCount()-1);
+				if(p.setValue().getCount()==0)
+					lst = p.getNext();
+		}
+		else {
+			while(p!=null){
+				if(p.getNext().getValue().getNum()==x){
+					p.getNext().setValue().setCount(p.setValue().getCount()-1);
+					if(p.getNext().setValue().getCount()==0)
+						p.setNext(p.getNext().getNext());
+				}
+				p = p.getNext();
+			}
 		}
 		System.out.println("remove " + x);
 	}
